@@ -1,0 +1,181 @@
+/* 基本页面样式 */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; /* 更现代的字体栈 */
+    background-color: #f4f7f9; /* 更柔和的背景色 */
+    color: #333;
+    padding: 15px;
+    text-align: center;
+    line-height: 1.5; /* 增加行高 */
+}
+
+h1, h2 {
+    color: #2c3e50; /* 更深的标题蓝 */
+}
+
+h2 {
+    margin-bottom: 15px; /* 标题下增加间距 */
+}
+
+
+/* 游戏信息区域 */
+#game-info {
+    margin-bottom: 25px;
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #34495e;
+}
+
+/* 游戏区域布局 (使用 Flexbox) */
+#game-area {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px; /* 列之间的间隙 */
+    max-width: 850px; /* 稍宽一点 */
+    margin: 0 auto 20px auto; /* 上下文边距 */
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08); /* 更柔和的阴影 */
+}
+
+/* 单词列样式 */
+.word-column {
+    flex: 1; /* 弹性增长 */
+    min-width: 220px; /* 最小宽度 */
+    padding: 0 15px;
+    text-align: left;
+    display: flex; /* 列内也用 flex 布局 */
+    flex-direction: column; /* 单词垂直排列 */
+    align-items: stretch; /* 让单词卡片宽度一致 (可选) */
+}
+
+
+/* 单词卡片样式 */
+.word-item {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    padding: 10px 14px; /* 增加内边距 */
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: all 0.25s ease-out; /* 平滑过渡效果 */
+    font-size: 1em; /* 调整字体大小 */
+    text-align: center; /* 卡片内文字居中 */
+    word-break: break-word; /* 长单词换行 */
+}
+
+/* 鼠标悬停在单词卡片上时的效果 */
+.word-item:hover {
+    border-color: #007bff;
+    background-color: #e7f3ff; /* 悬停时更淡的蓝色 */
+    transform: translateY(-2px); /* 轻微上移 */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* 单词被选中时的样式 */
+.word-item.selected {
+    background-color: #cfe2ff;
+    border-color: #0d6efd;
+    font-weight: bold;
+    box-shadow: 0 0 8px rgba(13, 110, 253, 0.3); /* 选中光晕 */
+}
+
+/* 单词被匹配后的样式 */
+.word-item.matched {
+    background-color: #e9ecef; /* 匹配后用稍浅的灰色 */
+    border-color: #ced4da;
+    color: #6c757d;
+    cursor: default;
+    opacity: 0.65; /* 更透明一点 */
+    pointer-events: none; /* 匹配后不可再点击 */
+}
+.word-item.matched:hover { /* 匹配后悬停无效果 */
+    background-color: #e9ecef;
+    border-color: #ced4da;
+    transform: none;
+    box-shadow: none;
+}
+
+/* 反馈区域样式 */
+#feedback-area {
+    margin-top: 20px;
+    font-size: 1.2em;
+    font-weight: bold;
+    height: 35px; /* 固定高度 */
+    line-height: 35px; /* 垂直居中 */
+    transition: color 0.3s;
+}
+.feedback-correct { color: #198754; } /* Boostrap 绿色 */
+.feedback-incorrect { color: #dc3545; } /* Boostrap 红色 */
+.feedback-info { color: #0d6efd; } /* Boostrap 蓝色 */
+
+
+/* 视觉反馈 (烟花/哭脸) 的样式 */
+#visual-feedback {
+    position: absolute;
+    font-size: 3.5em; /* 再大一点 */
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-out;
+    pointer-events: none;
+    z-index: 100;
+    left: 0; top: 0; /* JS 会覆盖 */
+    transform: scale(0.5); /* 初始缩小 */
+}
+#visual-feedback.show {
+    opacity: 1;
+    transform: scale(1); /* 放大到正常尺寸 */
+}
+
+/* 游戏结束信息样式 */
+#game-over-message {
+    margin-top: 40px; /* 距离上方更多 */
+    padding: 25px;
+    background-color: #d1ecf1;
+    border: 1px solid #bee5eb;
+    border-radius: 8px;
+    color: #0c5460;
+    max-width: 400px; /* 限制宽度 */
+    margin-left: auto;
+    margin-right: auto;
+}
+#game-over-message h2 {
+    color: #0aa1c0; /* 结束标题颜色 */
+    margin-bottom: 15px;
+}
+#game-over-message p {
+    font-size: 1.1em;
+    margin-bottom: 20px;
+}
+
+/* 用于隐藏元素的类 */
+.hidden {
+    display: none;
+}
+
+/* 按钮样式 */
+button {
+    padding: 12px 20px;
+    font-size: 1.05em;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-top: 10px;
+    transition: background-color 0.2s;
+}
+button:hover {
+    background-color: #0056b3;
+}
+
+/* 手机屏幕适应性调整 */
+@media (max-width: 700px) { /* 调整断点 */
+    body { padding: 10px; }
+    #game-area { flex-direction: column; max-width: 95%; padding: 15px; }
+    .word-column { min-width: 100%; padding: 0; margin-bottom: 20px; }
+    h1 { font-size: 1.6em; }
+    h2 { font-size: 1.3em; }
+    .word-item { padding: 8px 10px; font-size: 0.9em; }
+    #visual-feedback { font-size: 3em; }
+}

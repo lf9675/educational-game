@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>单词配对游戏</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>单词配对游戏</h1>
+
+    <div id="game-info">
+        得分: <span id="score">0</span> | 第 <span id="current-page">1</span> / <span id="total-pages">?</span> 组
+    </div>
+
+    <div id="game-area">
+        <div id="english-column" class="word-column">
+            <h2>英文单词</h2>
+            </div>
+        <div id="chinese-column" class="word-column">
+            <h2>中文翻译</h2>
+            </div>
+    </div>
+
+    <div id="feedback-area">
+        </div>
+
+    <div id="visual-feedback"></div>
+
+    <div id="game-over-message" class="hidden">
+        <h2>恭喜！全部完成！</h2>
+        <p>最终得分: <span id="final-score">0</span></p>
+        <button onclick="location.reload()">重新开始</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
